@@ -2,7 +2,7 @@ import requests
 import json
 import datetime
 
-def get_candle_date_time_kst():
+def get_candle_date_time_kst(make_txt):
     time = datetime.datetime.utcnow()
 
     url = "https://api.upbit.com/v1/candles/days?market=KRW-BTC&count=200"
@@ -36,9 +36,9 @@ def get_candle_date_time_kst():
     candle_date_time_kst.reverse()
 
     # txt 파일로 저장
-    with open("candle_date_time_kst.txt", 'w', encoding='UTF-8') as file:
-        for price in candle_date_time_kst:
-            file.write(str(price) + '\n')
-
+    if make_txt:
+        with open("candle_date_time_kst.txt", 'w', encoding='UTF-8') as file:
+            for price in candle_date_time_kst:
+                file.write(str(price) + '\n')
 
     return candle_date_time_kst

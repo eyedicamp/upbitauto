@@ -2,7 +2,7 @@ import requests
 import json
 import datetime
 
-def get_change_rate():
+def get_change_rate(make_txt):
     time = datetime.datetime.utcnow()
 
     url = "https://api.upbit.com/v1/candles/days?market=KRW-BTC&count=200"
@@ -36,9 +36,9 @@ def get_change_rate():
     change_rate.reverse()
 
     # txt 파일로 저장
-    with open("change_rate.txt", 'w', encoding='UTF-8') as file:
-        for price in change_rate:
-            file.write(str(price) + '\n')
-
+    if make_txt:
+        with open("change_rate.txt", 'w', encoding='UTF-8') as file:
+            for price in change_rate:
+                file.write(str(price) + '\n')
 
     return change_rate

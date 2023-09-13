@@ -3,7 +3,7 @@ import json
 import datetime
 
 
-def get_trade_price():
+def get_trade_price(make_txt):
 
     time = datetime.datetime.utcnow()
 
@@ -37,8 +37,9 @@ def get_trade_price():
 
     trade_price.reverse()
     
-    with open("trade_price.txt", 'w', encoding='UTF-8') as file:
-        for price in trade_price:
-            file.write(str(price) + '\n')
+    if make_txt:
+        with open("trade_price.txt", 'w', encoding='UTF-8') as file:
+            for price in trade_price:
+                file.write(str(price) + '\n')
     
     return trade_price
