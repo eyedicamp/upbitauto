@@ -1,3 +1,4 @@
+moving_average_10
 nan
 nan
 nan
