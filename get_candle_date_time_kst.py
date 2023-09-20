@@ -14,7 +14,7 @@ def get_candle_date_time_kst(make_txt):
     candle_date_time_kst = []
 
     for i in range(200):
-        candle_date_time_kst.append(data[i]['candle_date_time_kst'])
+        candle_date_time_kst.append(data[i]['candle_date_time_kst'][:-9])
 
     while True:
         time = time - datetime.timedelta(days=200)
@@ -27,11 +27,11 @@ def get_candle_date_time_kst(make_txt):
         
         if len(data) < 200:
             for i in range(len(data)):
-                candle_date_time_kst.append(data[i]['candle_date_time_kst'])
+                candle_date_time_kst.append(data[i]['candle_date_time_kst'][:-9])
             break
         else:
             for i in range(200):
-                candle_date_time_kst.append(data[i]['candle_date_time_kst'])
+                candle_date_time_kst.append(data[i]['candle_date_time_kst'][:-9])
 
     candle_date_time_kst.reverse()
 
