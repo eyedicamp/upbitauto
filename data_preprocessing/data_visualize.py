@@ -10,11 +10,16 @@ def data_visulize(date):
     df.plot(kind='line',x='candle_date_time_kst',y='moving_average_5', ax=ax)
     df.plot(kind='line',x='candle_date_time_kst',y='moving_average_10', ax=ax)
     df.plot(kind='line',x='candle_date_time_kst',y='moving_average_20', ax=ax)
+    
+    for i in range(len(df['resistance_line'])):
+        plt.axhline(df['resistance_line'][i], color='red', linestyle='--', linewidth=2)
+    for i in range(len(df['support_line'])):
+        plt.axhline(df['support_line'][i], color='blue', linestyle='--', linewidth=2)
 
     plt.xlabel('Date')
     plt.ylabel('Price')
     plt.title('BTC Price')
-    plt.legend(['trade_price', 'moving_average_5', 'moving_average_10', 'moving_average_20'])
+    plt.legend(['trade_price', 'moving_average_5', 'moving_average_10', 'moving_average_20'], loc='upper left')
     plt.grid(True)
 
     
