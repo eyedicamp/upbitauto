@@ -38,7 +38,8 @@ def get_trade_price(make_txt):
     trade_price.reverse()
     
     if make_txt:
-        with open("trade_price.txt", 'w', encoding='UTF-8') as file:
+        with open("C:/Users/slsl9/Documents/upbitauto/data/trade_price.txt", 'w', encoding='UTF-8') as file:
+            file.write("trade_price" + '\n')
             for price in trade_price:
                 file.write(str(price) + '\n')
     

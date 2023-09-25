@@ -11,7 +11,8 @@ def get_moving_average(days, make_txt):
     moving_average = moving_average_df.values.tolist()
 
     if make_txt:
-        with open("moving_average_" + str(days) + ".txt", 'w', encoding='UTF-8') as file:
+        with open("C:/Users/slsl9/Documents/upbitauto/data/moving_average_" + str(days) + ".txt", 'w', encoding='UTF-8') as file:
+            file.write("moving_average_" + str(days) + '\n')
             for average in moving_average:
                 file.write(str(average) + '\n')
     

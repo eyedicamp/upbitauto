@@ -2,7 +2,7 @@ import requests
 import json
 import datetime
 
-def get_candle_date_time_kst(make_txt):
+def get_change_rate(make_txt):
     time = datetime.datetime.utcnow()
 
     url = "https://api.upbit.com/v1/candles/days?market=KRW-BTC&count=200"
@@ -11,10 +11,10 @@ def get_candle_date_time_kst(make_txt):
 
     data = json.loads(response.text)
 
-    candle_date_time_kst = []
+    change_rate = []
 
     for i in range(200):
-        candle_date_time_kst.append(data[i]['candle_date_time_kst'][:-9])
+        change_rate.append(data[i]['change_rate'])
 
     while True:
         time = time - datetime.timedelta(days=200)
@@ -27,18 +27,19 @@ def get_candle_date_time_kst(make_txt):
         
         if len(data) < 200:
             for i in range(len(data)):
-                candle_date_time_kst.append(data[i]['candle_date_time_kst'][:-9])
+                change_rate.append(data[i]['change_rate'])
             break
         else:
             for i in range(200):
-                candle_date_time_kst.append(data[i]['candle_date_time_kst'][:-9])
+                change_rate.append(data[i]['change_rate'])
 
-    candle_date_time_kst.reverse()
+    change_rate.reverse()
 
     # txt 파일로 저장
     if make_txt:
-        with open("candle_date_time_kst.txt", 'w', encoding='UTF-8') as file:
-            for price in candle_date_time_kst:
+        with open("C:/Users/slsl9/Documents/upbitauto/data/change_rate.txt", 'w', encoding='UTF-8') as file:
+            file.write("change_rate" + '\n')
+            for price in change_rate:
                 file.write(str(price) + '\n')
 
-    return candle_date_time_kst
+    return change_rate

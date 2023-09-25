@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def data_visulize(date):
-    df = pd.read_excel("./raw_data.xlsx", engine="openpyxl")
+    df = pd.read_excel("C:/Users/slsl9/Documents/upbitauto/data/raw_data.xlsx", engine="openpyxl")
 
     ax = plt.gca()
 
@@ -29,4 +29,4 @@ def data_visulize(date):
     else:
         plt.show()
 
-data_visulize(300)
+data_visulize(0)
