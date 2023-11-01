@@ -12,9 +12,9 @@ def data_visulize(date):
     df.plot(kind='line',x='candle_date_time_kst',y='moving_average_20', ax=ax)
     
     for i in range(len(df['resistance_line'])):
-        plt.axhline(df['resistance_line'][i], color='red', linestyle='--', linewidth=2)
+        plt.axhline(df['resistance_line'][i], color='red', linestyle='--', linewidth=2) # 저항선
     for i in range(len(df['support_line'])):
-        plt.axhline(df['support_line'][i], color='blue', linestyle='--', linewidth=2)
+        plt.axhline(df['support_line'][i], color='blue', linestyle='--', linewidth=2) # 지지선
 
     plt.xlabel('Date')
     plt.ylabel('Price')
