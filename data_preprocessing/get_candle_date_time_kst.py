@@ -37,7 +37,7 @@ def get_candle_date_time_kst(make_txt):
 
     # txt 파일로 저장
     if make_txt:
-        with open("C:/Users/slsl9/Documents/upbitauto/data/candle_date_time_kst.txt", 'w', encoding='UTF-8') as file:
+        with open("../data", 'w', encoding='UTF-8') as file:
             file.write("candle_date_time_kst" + '\n')
             for price in candle_date_time_kst:
                 file.write(str(price) + '\n')

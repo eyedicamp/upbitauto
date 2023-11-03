@@ -37,7 +37,7 @@ def get_change_rate(make_txt):
 
     # txt 파일로 저장
     if make_txt:
-        with open("C:/Users/slsl9/Documents/upbitauto/data/change_rate.txt", 'w', encoding='UTF-8') as file:
+        with open("../data/change_rate.txt", 'w', encoding='UTF-8') as file:
             file.write("change_rate" + '\n')
             for price in change_rate:
                 file.write(str(price) + '\n')

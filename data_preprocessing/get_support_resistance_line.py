@@ -5,7 +5,7 @@ import hdbscan
 from sklearn.preprocessing import RobustScaler
 
 def get_support_resistance_line(cluster_size, make_txt, plot):
-    df_trade_price = pd.read_csv('C:/Users/slsl9/Documents/upbitauto/data/trade_price.txt', sep = ' ')
+    df_trade_price = pd.read_csv('../data/trade_price.txt', sep = ' ')
 
     df_scale = pd.DataFrame(RobustScaler().fit_transform(df_trade_price), columns = df_trade_price.columns)
 
@@ -29,11 +29,11 @@ def get_support_resistance_line(cluster_size, make_txt, plot):
                 plt.axhline(support_line, color='blue', linestyle='--', linewidth=2)
 
     if make_txt:
-        with open("C:/Users/slsl9/Documents/upbitauto/data/resistance_line.txt", 'w', encoding='UTF-8') as file:
+        with open("../data/resistance_line.txt", 'w', encoding='UTF-8') as file:
             file.write("resistance_line" + '\n')
             for rst in resist:
                 file.write(str(rst) + '\n')
-        with open("C:/Users/slsl9/Documents/upbitauto/data/support_line.txt", 'w', encoding='UTF-8') as file:
+        with open("../data/support_line.txt", 'w', encoding='UTF-8') as file:
             file.write("support_line" + '\n')
             for spt in support:
                 file.write(str(spt) + '\n')

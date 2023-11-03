@@ -1,7 +1,7 @@
 import requests
 import json
 import datetime
-
+import os
 
 def get_trade_price(make_txt):
 
@@ -27,20 +27,39 @@ def get_trade_price(make_txt):
         
         data = json.loads(response.text)
         
-        if len(data) < 200:
-            for i in range(len(data)):
-                trade_price.append(data[i]['trade_price'])
-            break
+        if (len(data) < 200):
+            try :
+                if data[0]['name'] != 'too_many_requests':
+                    for i in range(len(data)):
+                        trade_price.append(data[i]['trade_price'])
+                    break
+            except:
+                break
+
         else:
             for i in range(200):
                 trade_price.append(data[i]['trade_price'])
 
     trade_price.reverse()
+
+    for i in range(len(trade_price)):
+        trade_price[i] = str(trade_price[i])
     
     if make_txt:
-        with open("C:/Users/slsl9/Documents/upbitauto/data/trade_price.txt", 'w', encoding='UTF-8') as file:
-            file.write("trade_price" + '\n')
-            for price in trade_price:
-                file.write(str(price) + '\n')
+        file = open(r"C:\Users\신승윤\Documents\upbitauto\data\trade_price.txt", "w")
+        # file.write("trade_price" + '\n')
+
+        # data = file.read()
+        # print("The file contents are:")
+        # print (data)
+        # print("출력 완료")
+
+        file.write("hello")
+
+        # for price in trade_price:
+        #     file.write(str(price) + '\n')
+        file.close()
     
     return trade_price
+
+get_trade_price(True)
